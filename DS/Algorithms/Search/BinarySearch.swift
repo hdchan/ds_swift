@@ -9,7 +9,7 @@
 import Foundation
 
 class BinarySearch<T: Comparable> {
-    func search(_ array: [T], for target: T, _ low: Int, _ high: Int) -> Int? {
+    func search(_ array: inout [T], for target: T, _ low: Int, _ high: Int) -> Int? {
         guard array.count > 0 else {
             return nil
         }
@@ -25,9 +25,9 @@ class BinarySearch<T: Comparable> {
         }
         
         if target < midPointValue {
-            return search(array, for: target, low, midPointIndex - 1)
+            return search(&array, for: target, low, midPointIndex - 1)
         } else {
-            return search(array, for: target, midPointIndex + 1, high)
+            return search(&array, for: target, midPointIndex + 1, high)
         }
         
     }
